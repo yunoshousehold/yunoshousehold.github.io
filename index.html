@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Yuno's household</title>
+    <style>
+        .titleworks, .titleothers {
+            text-align: center;
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+
+        .others p {
+            text-align: center; /* Center paragraph after titleothers */
+        }
+
+        .container {
+            border: 3px solid grey; /* Border for the container */
+            padding: 10px; /* Add some padding inside the container */
+            width: 100%; /* Set container width to 100% for full width on small screens */
+            margin: 0 auto; /* Center the container horizontally */
+            margin-bottom: 20px; /* Add margin for spacing */
+            box-sizing: border-box; /* Include padding and border in the width */
+            overflow: hidden; /* Clear float */
+        }
+
+        .column {
+            float: left; /* Float columns to the left */
+            width: 50%; /* Set the width of each column */
+            box-sizing: border-box; /* Include padding and border in the width */
+            padding: 0 5px; /* Add some padding between columns */
+            position: relative; /* Set position relative for absolute positioning */
+            margin-bottom: 20px; /* Add margin between rows */
+        }
+
+            .column img {
+                width: auto; /* Set image width to auto */
+                height: 220px; /* Set image height to 220px */
+                display: block; /* Make sure image behaves like a block element */
+                float: left; /* Float the image to the left */
+                margin-right: 10px; /* Add some space between the image and text */
+            }
+
+            .column h2,
+            .column p {
+                margin: 0; /* Reset margin */
+                padding: 0; /* Reset padding */
+            }
+
+        /* Style for the clickable area */
+        .clickable {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure the clickable area is above the content */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="titleworks">
+        <h1>Works</h1>
+    </div>
+    <div class="container">
+        <!-- First row -->
+        <div class="column">
+            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
+            <h2>Text Here</h2>
+            <p>This is the text that will appear alongside the image in the first column.</p>
+        </div>
+        <div class="column">
+            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
+            <h2>Text Here</h2>
+            <p>This is the text that will appear alongside the image in the second column.</p>
+        </div>
+        <!-- Second row -->
+        <div class="column" style="margin-top: 20px;">
+            <!-- Add margin-top to create space between rows -->
+            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
+            <h2>Text Here</h2>
+            <p>This is the text that will appear alongside the image in the third column.</p>
+        </div>
+        <div class="column" style="margin-top: 20px;">
+            <!-- Add margin-top to create space between rows -->
+            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
+            <h2>Text Here</h2>
+            <p>This is the text that will appear alongside the image in the fourth column.</p>
+        </div>
+    </div>
+    <div class="titleothers">
+        <h1>Others:</h1>
+        <p>(not my works! they're deleted winrina stories from wattpad.)</p>
+    </div>
+    <div class="container">
+        <!-- First row -->
+        <div class="column">
+            <a href="MONEY/money.pdf" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <img src="images/000000.jpg"> <!-- Replace "images/000000.jpg" with your image path -->
+            <h2>MONEY</h2>
+            <p>This is the text that will appear alongside the image in the first column.</p>
+        </div>
+        <div class="column">
+            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
+            <h2>Text Here</h2>
+            <p>This is the text that will appear alongside the image in the second column.</p>
+        </div>
+        <!-- Second row -->
+        <div class="column" style="margin-top: 20px;">
+            <!-- Add margin-top to create space between rows -->
+            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
+            <h2>Text Here</h2>
+            <p>This is the text that will appear alongside the image in the third column.</p>
+        </div>
+        <div class="column" style="margin-top: 20px;">
+            <!-- Add margin-top to create space between rows -->
+            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
+            <h2>Text Here</h2>
+            <p>This is the text that will appear alongside the image in the fourth column.</p>
+        </div>
+    </div>
+</body>
+</html>

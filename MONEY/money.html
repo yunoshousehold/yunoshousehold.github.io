@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <style>
+        h1 {
+            font-family: "Open Sans", sans-serif; /* Set font to Open Sans */
+            font-weight: bold; /* Set font weight to bold */
+            text-align: center; /* Center the text */
+            position: relative; /* Position relative for pseudo-element */
+            padding-bottom: 20px;
+        }
+
+            h1::after {
+                content: ''; /* Add content */
+                position: absolute; /* Position absolute for line */
+                left: 0; /* Align line to left */
+                right: 0; /* Align line to right */
+                bottom: 0; /* Align line to bottom */
+                height: 1px; /* Set line height */
+                background-color: #000; /* Set line color */
+            }
+
+        h3, p {
+            font-family: "Open Sans", sans-serif; /* Set font to Open Sans */
+        }
+
+        h3 {
+            font-style: italic; /* Set font style to italic for h2 */
+        }
+
+        p {
+            margin-bottom: 20px; /* Add margin bottom */
+        }
+
+        body {
+            width: 210mm; /* Set width to A4 width (210mm) */
+            height: 297mm; /* Set height to A4 height (297mm) */
+            margin: 0 auto; /* Center the content horizontally */
+            padding: 20mm; /* Add padding for readability */
+        }
+
+        /* Style for dropdown menu */
+        .dropdown {
+            position: absolute; /* Position the dropdown */
+            top: 20px; /* Adjust the distance from the top */
+            left: 20px; /* Adjust the distance from the left */
+        }
+
+        /* Style for dropdown button */
+        .dropdown-btn {
+            background-color: #f1f1f1; /* Background color of the button */
+            padding: 16px 24px; /* Larger padding for the button */
+            border: none; /* Remove border */
+            cursor: pointer; /* Change cursor to pointer */
+            display: block; /* Display as block element */
+        }
+
+        /* Style for dropdown content */
+        .dropdown-content {
+            display: none; /* Hide the dropdown content by default */
+            position: absolute; /* Position the dropdown content */
+            background-color: #f9f9f9; /* Background color of the dropdown content */
+            min-width: 160px; /* Set minimum width of the dropdown content */
+            z-index: 1; /* Set z-index to ensure it appears above other elements */
+            padding: 8px 0; /* Add padding for dropdown items */
+        }
+
+        /* Style for dropdown items */
+        .dropdown-item {
+            padding: 8px 16px; /* Padding for dropdown items */
+            display: block; /* Display as block elements */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        /* Show dropdown content on click */
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Style for bottom line */
+        .bottom-line {
+            border-top: 1px solid #000; /* Add border for bottom line */
+            text-align: center; /* Center the text */
+            padding-top: 10px; /* Add padding on top */
+            margin-top: 20px; /* Add margin above the bottom line */
+        }
+    </style>
+</head>
+<body>
+    <!-- Dropdown menu -->
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown()">Chapters</button>
+        <div class="dropdown-content">
+            <!-- Generate chapter links dynamically -->
+            <!-- You can replace the "#" with actual links if needed -->
+            <script>
+                for (let i = 1; i <= 27; i++) {
+                    document.write(`<a href="#ch${i}" class="dropdown-item">Chapter ${i}</a>`);
+                }
+            </script>
+        </div>
+    </div>
+
+    <!-- Chapter content -->
+    <!-- Generate chapter content dynamically -->
+    <script>
+        for (let i = 1; i <= 27; i++) {
+            document.write(`<h1 id="ch${i}">CH${i}</h1>`);
+            document.write(`<h3>Jimin</h3>`);
+            document.write(`<p>text text text</p>`);
+        }
+    </script>
+
+    <!-- Bottom line with text -->
+    <div class="bottom-line">
+        <p>End of Document</p>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.querySelector('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
