@@ -2,6 +2,50 @@
 <html lang="en-US">
 <head>
     <style>
+        body {
+            background-color: #ffffff;
+            color: #000;
+            width: 210mm; /* Set width to A4 width (210mm) */
+            height: 297mm; /* Set height to A4 height (297mm) */
+            margin: 0 auto; /* Center the content horizontally */
+            padding: 20mm; /* Add padding for readability */
+            position: relative; /* Set position to relative */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* CSS styles for dark mode */
+        body.dark-mode {
+            background-color: #272525; /* Set background color to black */
+            color: #C4C4C4; /* Set font color to white */
+        }
+
+        body.dark-mode h1::after {
+            background-color: #C4C4C4; /* Set line color to white in dark mode */
+        }
+
+        /* Style for light/dark mode buttons */
+        .mode-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Make the button circular */
+            border: none;
+            background-color: #f0f0f0; /* Set default background color */
+            color: #000000; /* Set default font color */
+            font-size: 20px;
+            cursor: pointer;
+            outline: none; /* Remove outline on focus */
+            transition: background-color 0.3s, transform 0.3s; /* Add transition for smooth color change and animation */
+        }
+
+        .dark-mode .mode-button {
+            background-color: #ffffff; /* Set background color to black in dark mode */
+            color: #000000; /* Set font color to white in dark mode */
+        }
+
+        .mode-button.clicked {
+            transform: scale(1); /* Scale up the button */
+        }
+
         h1 {
             font-family: "Open Sans", sans-serif; /* Set font to Open Sans */
             font-weight: bold; /* Set font weight to bold */
@@ -10,15 +54,15 @@
             padding-bottom: 20px;
         }
 
-            h1::after {
-                content: ''; /* Add content */
-                position: absolute; /* Position absolute for line */
-                left: 0; /* Align line to left */
-                right: 0; /* Align line to right */
-                bottom: 0; /* Align line to bottom */
-                height: 1px; /* Set line height */
-                background-color: #000; /* Set line color */
-            }
+        h1::after {
+            content: ''; /* Add content */
+            position: absolute; /* Position absolute for line */
+            left: 0; /* Align line to left */
+            right: 0; /* Align line to right */
+            bottom: 0; /* Align line to bottom */
+            height: 1px; /* Set line height */
+            background-color: #000; /* Set line color */
+        }
 
         h3, p {
             font-family: "Open Sans", sans-serif; /* Set font to Open Sans */
@@ -30,39 +74,35 @@
 
         p {
             margin-bottom: 20px; /* Add margin bottom */
+            font-size: 18px; /* Increase font size */
+            font-family: Arial, sans-serif; /* Change font family */
+            font-weight: 540; /* Set font weight to something bold */
         }
 
-        body {
-            width: 210mm; /* Set width to A4 width (210mm) */
-            height: 297mm; /* Set height to A4 height (297mm) */
-            margin: 0 auto; /* Center the content horizontally */
-            padding: 20mm; /* Add padding for readability */
+        /* Style for the tab icon */
+        .tab-icon {
+            font-size: 24px; /* Set font size */
+            cursor: pointer; /* Change cursor to pointer */
+            padding: 10px; /* Add padding */
         }
 
         /* Style for dropdown menu */
         .dropdown {
-            position: absolute; /* Position the dropdown */
-            top: 20px; /* Adjust the distance from the top */
-            left: 20px; /* Adjust the distance from the left */
-        }
-
-        /* Style for dropdown button */
-        .dropdown-btn {
-            background-color: #f1f1f1; /* Background color of the button */
-            padding: 16px 24px; /* Larger padding for the button */
-            border: none; /* Remove border */
-            cursor: pointer; /* Change cursor to pointer */
-            display: block; /* Display as block element */
+            position: relative; /* Change position to fixed */
+            display: inline-block;
         }
 
         /* Style for dropdown content */
         .dropdown-content {
             display: none; /* Hide the dropdown content by default */
             position: absolute; /* Position the dropdown content */
-            background-color: #f9f9f9; /* Background color of the dropdown content */
+            background-color: #C4C4C4; /* Background color of the dropdown content */
             min-width: 160px; /* Set minimum width of the dropdown content */
+            height: 500px; /* Set maximum height of the dropdown content */
+            overflow-y: auto; /* Enable vertical scrolling */
             z-index: 1; /* Set z-index to ensure it appears above other elements */
             padding: 8px 0; /* Add padding for dropdown items */
+            border-radius: 5px; /* Add border radius */
         }
 
         /* Style for dropdown items */
@@ -70,10 +110,24 @@
             padding: 8px 16px; /* Padding for dropdown items */
             display: block; /* Display as block elements */
             cursor: pointer; /* Change cursor to pointer */
+            color: #000;
         }
 
-        /* Show dropdown content on click */
-        .dropdown.active .dropdown-content {
+        .dropdown-content button {
+            width: 100%;
+            padding: 12px 16px;
+            text-align: left;
+            border: none;
+            background-color: inherit;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .dropdown-content button:hover {
+                background-color: #ddd;
+            }
+                /* Show dropdown content on click */
+                .dropdown.active .dropdown-content {
             display: block;
         }
 
@@ -81,45 +135,247 @@
         .bottom-line {
             border-top: 1px solid #000; /* Add border for bottom line */
             text-align: center; /* Center the text */
-            padding-top: 10px; /* Add padding on top */
-            margin-top: 20px; /* Add margin above the bottom line */
+            padding-top: 5px; /* Add padding on top */
         }
+
+        /* Style for active chapter in dropdown */
+        .dropdown-item.active {
+            background-color: #f0f0f0; /* Set background color for active chapter */
+        }
+
+        .bottom-line p {
+            font-size: 15px;
+        }
+
+        .story-paragraph {
+            margin-bottom: 20px; /* Add space between paragraphs */
+        }
+
+        .chapter {
+            padding-left: 0;
+        }
+
+        .chapter h1 {
+            font-family: "Open Sans", sans-serif;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        /* Container for dark mode button */
+        .dark-mode-container {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
     </style>
 </head>
 <body>
     <!-- Dropdown menu -->
     <div class="dropdown">
-        <button class="dropdown-btn" onclick="toggleDropdown()">Chapters</button>
-        <div class="dropdown-content">
+        <div class="tab-icon" onclick="toggleDropdown()">
+            &#9776; <!-- Unicode character for the three horizontal lines -->
+        </div>
+        <div class="dropdown-content" id="chapterDropdown">
             <!-- Generate chapter links dynamically -->
             <!-- You can replace the "#" with actual links if needed -->
-            <script>
-                for (let i = 1; i <= 27; i++) {
-                    document.write(`<a href="#ch${i}" class="dropdown-item">Chapter ${i}</a>`);
-                }
-            </script>
+            <button onclick="toggleMode()" class="mode-button" id="modeButton">🌞</button>
         </div>
     </div>
+    </div>
 
-    <!-- Chapter content -->
-    <!-- Generate chapter content dynamically -->
-    <script>
-        for (let i = 1; i <= 27; i++) {
-            document.write(`<h1 id="ch${i}">CH${i}</h1>`);
-            document.write(`<h3>Jimin</h3>`);
-            document.write(`<p>text text text</p>`);
-        }
-    </script>
-
-    <!-- Bottom line with text -->
+    <!-- CHAPTER 1 -->
+    <div class="chapter" id="chapter1">
+        <h1 class="chapter-title">Misery Loves Company</h1>
+        <div class="story" id="chapter1-story">
+            <h3>Jimin</h3>
+        </div>
+    </div>
+    <!-- CHAPTER 2 -->
+    <div class="chapter" id="chapter2">
+        <h1 class="chapter-title">Fit For A King</h1>
+        <div class="story" id="chapter2-story">
+            <h3>Jimin</h3>
+        </div>
+    </div>
+    <!-- LINE -->
     <div class="bottom-line">
-        <p>End of Document</p>
+        <p>If the rightful owner wants to take this down, please email me: jmjwriterau@gmail.com</p>
     </div>
 
     <script>
+
+        var chapter1Story = `
+                                Misery. One little word. Six letters. So many meanings that held a weight on its own. How was it that one word could have held such an effect on one's life? Was that all it had taken? A six-letter word with a hapless definition that I had recalled from an old Oxford dictionary, which accurately explains my life.
+
+                                Dejected and distraught, I folded the wretched piece of paper and placed it back into the envelope. The phrase 'out of sight... out of mind' would have been quite nice at the moment to enjoy, but the contents of the letter were still niggling like a nuisance at the back of my mind. It's for certain, misery loves company. Especially mine.
+
+                                Exhausted both physically and emotionally, I tumbled down to the overused sofa in my makeshift living area, silently cringing at the spring's groan of response. Ignoring the sting in my tired eyes, I blinked the tears away as I massaged my throbbing temples.
+                            `;
+
+        // Split the story content into paragraphs
+        var paragraphs1 = chapter1Story.split('\n').filter(paragraph => paragraph.trim() !== '');
+
+        // Generate HTML for each paragraph and append to the story container
+        var storyContainer1 = document.getElementById('chapter1-story');
+        paragraphs1.forEach(paragraph => {
+            var p = document.createElement('p');
+            p.classList.add('story-paragraph');
+            p.textContent = paragraph.trim();
+            storyContainer1.appendChild(p);
+        });
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        var chapter2Story = `
+                                Hope. It was a faint glimmer, barely perceptible amidst the darkness that shrouded my world. Yet, it persisted, a resilient flame flickering in the tempest of despair. With each passing day, it grew stronger, casting its warm glow upon the shadows that had engulfed me.
+
+                                As I navigated the trials and tribulations of life, I clung to that hope like a lifeline, guiding me through the tumultuous seas of uncertainty. It whispered promises of better days ahead, of dreams yet to be realized, and of a future filled with endless possibilities.
+
+                                Despite the odds stacked against me, I refused to surrender to despair. For in the depths of my soul, I knew that as long as hope endured, so too did the chance for redemption. And so, with unwavering determination, I pressed forward, one step at a time, towards the light that beckoned me from beyond the horizon.
+                            `;
+
+        // Split the story content into paragraphs
+        var paragraphs2 = chapter2Story.split('\n').filter(paragraph => paragraph.trim() !== '');
+
+        // Generate HTML for each paragraph and append to the story container
+        var storyContainer2 = document.getElementById('chapter2-story');
+        paragraphs2.forEach(paragraph => {
+            var p = document.createElement('p');
+            p.classList.add('story-paragraph');
+            p.textContent = paragraph.trim();
+            storyContainer2.appendChild(p);
+        });
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function updateActiveChapter() {
+            var scrollPosition = window.scrollY; // Get scroll position
+            var chapterPositions = []; // Array to store positions of chapter elements
+
+            // Loop through each chapter and store its position
+            for (let i = 1; i <= 2; i++) { // Update the loop limit to match the number of chapters
+                var chapter = document.getElementById(`chapter${i}`);
+                chapterPositions.push(chapter.offsetTop);
+            }
+
+            // Loop through chapter positions to determine active chapter
+            for (let i = 0; i < chapterPositions.length; i++) {
+                if (scrollPosition >= chapterPositions[i] && scrollPosition < chapterPositions[i + 1]) {
+                    // Remove 'active' class from all dropdown items
+                    dropdownItems.forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+
+                    // Add 'active' class to corresponding dropdown item
+                    dropdownItems[i].classList.add('active');
+                    break;
+                }
+            }
+        }
+
+        window.onload = function () {
+            var savedScrollPosition = localStorage.getItem('scrollPosition');
+            if (savedScrollPosition !== null) {
+                window.scrollTo(0, savedScrollPosition);
+            }
+
+            // Call the function to update the active chapter when the page loads
+            updateActiveChapter();
+        };
+
+        window.onbeforeunload = function () {
+            saveScrollPosition();
+        };
+
+        window.onunload = function () {
+            saveScrollPosition();
+        };
+
+        // Add event listener to update active chapter on scroll
+        window.addEventListener('scroll', updateActiveChapter);
+
         function toggleDropdown() {
             var dropdown = document.querySelector('.dropdown');
             dropdown.classList.toggle('active');
+        }
+
+        // Get all chapter titles
+        var chapterTitles = document.querySelectorAll('.chapter-title');
+
+        // Get the dropdown content container
+        var dropdownContent = document.getElementById('chapterDropdown');
+
+        // Loop through chapter titles and append them to the dropdown menu
+        chapterTitles.forEach(function (title, index) {
+            var chapterNumber = index + 1;
+            var chapterTitle = title.textContent;
+            var dropdownItem = document.createElement('a');
+            dropdownItem.href = `#chapter${chapterNumber}`;
+            dropdownItem.textContent = chapterTitle;
+            dropdownItem.classList.add('dropdown-item');
+            dropdownContent.appendChild(dropdownItem);
+        });
+
+        // Get all dropdown items
+        var dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        // Add event listener to each dropdown item
+        dropdownItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                // Remove 'active' class from all dropdown items
+                dropdownItems.forEach(function (item) {
+                    item.classList.remove('active');
+                });
+
+                // Add 'active' class to clicked dropdown item
+                this.classList.add('active');
+            });
+        });
+
+        // Detect scroll position and highlight active chapter in dropdown
+        window.addEventListener('scroll', function () {
+            var scrollPosition = window.scrollY; // Get scroll position
+            var chapterPositions = []; // Array to store positions of chapter elements
+
+            // Loop through each chapter and store its position
+            for (let i = 1; i <= 27; i++) {
+                var chapter = document.getElementById(`chapter${i}`);
+                chapterPositions.push(chapter.offsetTop);
+            }
+
+            // Loop through chapter positions to determine active chapter
+            for (let i = 0; i < chapterPositions.length; i++) {
+                if (scrollPosition >= chapterPositions[i] && scrollPosition < chapterPositions[i + 1]) {
+                    // Remove 'active' class from all dropdown items
+                    dropdownItems.forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+
+                    // Add 'active' class to corresponding dropdown item
+                    dropdownItems[i].classList.add('active');
+                    break;
+                }
+            }
+        });
+
+        function toggleMode() {
+            const body = document.body;
+            const modeButton = document.getElementById('modeButton');
+
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                modeButton.innerHTML = '🌞'; // Change button text to sun emoji
+            } else {
+                body.classList.add('dark-mode');
+                modeButton.innerHTML = '🌜'; // Change button text to moon emoji
+            }
+
+            modeButton.classList.add('clicked'); // Apply slide animation
+            setTimeout(() => {
+                modeButton.classList.remove('clicked'); // Remove slide animation after 0.3s
+            }, 300);
         }
     </script>
 </body>

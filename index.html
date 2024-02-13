@@ -3,7 +3,8 @@
 <head>
     <title>Yuno's household</title>
     <style>
-        .titleworks, .titleothers {
+        .titleworks,
+        .titleothers {
             text-align: center;
             margin-bottom: 20px; /* Add margin for spacing */
         }
@@ -13,13 +14,14 @@
         }
 
         .container {
-            border: 3px solid grey; /* Border for the container */
+            border: 2px solid grey; /* Border for the container */
             padding: 10px; /* Add some padding inside the container */
-            width: 80%;
+            width: 60%;
             margin: 0 auto; /* Center the container horizontally */
             margin-bottom: 20px; /* Add margin for spacing */
             box-sizing: border-box; /* Include padding and border in the width */
             overflow: hidden; /* Clear float */
+            position: relative; /* Ensure position relative for absolute positioning within */
         }
 
         .column {
@@ -33,7 +35,7 @@
 
             .column img {
                 width: auto; /* Set image width to auto */
-                height: 220px; /* Set image height to 220px */
+                height: 270px; /* Set image height to 220px */
                 display: block; /* Make sure image behaves like a block element */
                 float: left; /* Float the image to the left */
                 margin-right: 10px; /* Add some space between the image and text */
@@ -43,6 +45,8 @@
             .column p {
                 margin: 0; /* Reset margin */
                 padding: 0; /* Reset padding */
+                position: relative; /* Ensure position relative for z-index to work */
+                z-index: 1; /* Ensure text and images are above the highlight */
             }
 
         /* Style for the clickable area */
@@ -53,9 +57,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 1; /* Ensure the clickable area is above the content */
+            z-index: 0; /* Ensure the clickable area is behind the content */
             cursor: pointer;
+            transition: background-color 0.3s; /* Add transition for smooth color change */
         }
+
+            .clickable:hover {
+                background-color: rgb(128, 128, 128, 0.5); /* Change background color on hover */
+            }
 
         /* Media query for smaller screens */
         @media screen and (max-width: 768px) {
@@ -63,75 +72,27 @@
                 width: 100%; /* Set container width to 100% for phones/mobile */
             }
         }
+
     </style>
 </head>
 <body>
     <div class="titleworks">
         <h1>Works</h1>
     </div>
-    <div class="container">
-        <!-- First row -->
-        <div class="column">
-            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
-            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
-            <h2>Text Here</h2>
-            <p>This is the text that will appear alongside the image in the first column.</p>
-        </div>
-        <div class="column">
-            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
-            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
-            <h2>Text Here</h2>
-            <p>This is the text that will appear alongside the image in the second column.</p>
-        </div>
-        <!-- Second row -->
-        <div class="column" style="margin-top: 20px;">
-            <!-- Add margin-top to create space between rows -->
-            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
-            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
-            <h2>Text Here</h2>
-            <p>This is the text that will appear alongside the image in the third column.</p>
-        </div>
-        <div class="column" style="margin-top: 20px;">
-            <!-- Add margin-top to create space between rows -->
-            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
-            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
-            <h2>Text Here</h2>
-            <p>This is the text that will appear alongside the image in the fourth column.</p>
-        </div>
-    </div>
+</div>
     <div class="titleothers">
-        <h1>Others:</h1>
+        <h1>Others</h1>
         <p>(not my works! they're deleted winrina stories from wattpad.)</p>
     </div>
     <div class="container">
         <!-- First row -->
         <div class="column">
-            <a href="MONEY/money.pdf" class="clickable"></a> <!-- Anchor tag for redirection -->
+            <a href="MONEY/money.html" class="clickable"></a> <!-- Anchor tag for redirection -->
             <img src="images/000000.jpg"> <!-- Replace "images/000000.jpg" with your image path -->
             <h2>MONEY</h2>
-            <p>This is the text that will appear alongside the image in the first column.</p>
+            <p>by sawturnmj</p>
+            <p>Description</p>
         </div>
-        <div class="column">
-            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
-            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
-            <h2>Text Here</h2>
-            <p>This is the text that will appear alongside the image in the second column.</p>
         </div>
-        <!-- Second row -->
-        <div class="column" style="margin-top: 20px;">
-            <!-- Add margin-top to create space between rows -->
-            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
-            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
-            <h2>Text Here</h2>
-            <p>This is the text that will appear alongside the image in the third column.</p>
-        </div>
-        <div class="column" style="margin-top: 20px;">
-            <!-- Add margin-top to create space between rows -->
-            <a href="https://example.com" class="clickable"></a> <!-- Anchor tag for redirection -->
-            <img src="images/000000.jpg" alt="Image"> <!-- Replace "images/000000.jpg" with your image path -->
-            <h2>Text Here</h2>
-            <p>This is the text that will appear alongside the image in the fourth column.</p>
-        </div>
-    </div>
 </body>
 </html>
